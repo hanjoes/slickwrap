@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle slickwrap",
+        "command": "slickwrap:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "slickwrap",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "slickwrap:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
