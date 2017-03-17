@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "slickwrap:toggle"
+    "alt-q": "slickwrap:wrap-buffer"
   }
 }

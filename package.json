@@ -6,7 +6,7 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "slickwrap:toggle"
+    "atom-text-editor": "slickwrap:wrapBuffer"
   },
   "repository": "https://github.com/hanjoes/slickwrap.git",
   "license": "MIT",
