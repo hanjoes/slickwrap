@@ -20,3 +20,5 @@ Use keymap _alt-q_ to wrap the whole file. This will make the file only contain 
 ### Note
 
 In case you are wondering why the _Max Row Length_ setting is not working. This package uses the [wrap-guide](https://github.com/atom/wrap-guide)'s line length for better results.
+
+For files doesn't contain extension, you can always wrap it with _alt-q_, but if you really want to auto wrap this type of files, add '' to the _Supported File Extensions_ settings. (for e.g.: before adding the old list is 'md, js', after adding empty empty extension, it becomes 'md, js, ')
