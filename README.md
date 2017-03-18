@@ -1,7 +1,7 @@
 # Slickwrap
 
 Trying to mimic emacs's easy-to-use auto wrap.
-This package uses _editor.preferredLineLength_ from [WrapGuide](https://github.com/atom/wrap-guide) package to control line length. If WrapGuide package is not installed, _Max Row Length_ from the package setting is used (default to 80).
+This package uses _editor.preferredLineLength_ from [wrap-guide](https://github.com/atom/wrap-guide) package to control line length. If wrap-guide package is not installed, _Max Row Length_ from the package setting is used (default to 80).
 
 ## Usage
 
@@ -19,4 +19,4 @@ Use keymap _alt-q_ to wrap the whole file. This will make the file only contain 
 
 ### Note
 
-In case you are wondering why the _Max Row Length_ setting is not working. This package uses the [WrapGuide](https://github.com/atom/wrap-guide)'s line length for better results.
+In case you are wondering why the _Max Row Length_ setting is not working. This package uses the [wrap-guide](https://github.com/atom/wrap-guide)'s line length for better results.
