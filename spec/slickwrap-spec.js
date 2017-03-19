@@ -10,30 +10,83 @@ describe('Slickwrap', () => {
     activationPromise = atom.packages.activatePackage('slickwrap');
   });
 
-  describe('when the slickwrap:toggle event is triggered', () => {
-    it('hides and shows the modal panel', () => {
-      // Before the activation event the view is not on the DOM, and no panel
-      // has been created
-      expect(workspaceElement.querySelector('.slickwrap')).not.toExist();
-
-      // This is an activation event, triggering it will cause the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'slickwrap:toggle');
-
-      waitsForPromise(() => {
-        return activationPromise;
+  describe('When wrapText is called on some text.', () => {
+    it('has no effect on empty text', () => {
+      expect(Slickwrap.wrapText('', 80)).toEqual({
+        increment: 0,
+        text: ''
       });
+    });
 
-      runs(() => {
-        expect(workspaceElement.querySelector('.slickwrap')).toExist();
+    it('does not wrap when guide is longer', () => {
+      var text = 'Hello World!\n';
+      expect(Slickwrap.wrapText(text, 80)).toEqual({
+        increment: 0,
+        text: text
+      });
+    });
 
-        let slickwrapElement = workspaceElement.querySelector('.slickwrap');
-        expect(slickwrapElement).toExist();
+    it('can correctly insert newline on the left of the guide', () => {
+      var text = 'Hello World !\n';
+      expect(Slickwrap.wrapText(text, 10)).toEqual({
+        increment: 1,
+        text: 'Hello\nWorld !\n'
+      });
+    });
 
-        let slickwrapPanel = atom.workspace.panelForItem(slickwrapElement);
-        expect(slickwrapPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'slickwrap:toggle');
-        expect(slickwrapPanel.isVisible()).toBe(false);
+    it('can correctly insert newline on the right of the guide', () => {
+      var text = 'Hello Hello\n';
+      expect(Slickwrap.wrapText(text, 4)).toEqual({
+        increment: 1,
+        text: 'Hello\nHello\n'
+      });
+    });
+
+    it('can correctly insert newline when guide is on WS', () => {
+      var text = 'Hello   Hello ';
+      expect(Slickwrap.wrapText(text, 7)).toEqual({
+        increment: 1,
+        text: 'Hello\nHello '
+      });
+    });
+
+    it('has no effect when there is only one long word', () => {
+      var text = 'HelloHello';
+      expect(Slickwrap.wrapText(text, 4)).toEqual({
+        increment: 0,
+        text: text
+      });
+    });
+
+    it('has no effect when there is only one word to the left', () => {
+      var text = '        HelloHello';
+      expect(Slickwrap.wrapText(text, 5)).toEqual({
+        increment: 0,
+        text: text
+      });
+    });
+
+    it('can correctly insert wrap when 2 words are to the left', () => {
+      var text = '        Hello  Hello';
+      expect(Slickwrap.wrapText(text, 5)).toEqual({
+        increment: 1,
+        text: '        Hello\nHello'
+      });
+    });
+
+    it('will not insert wrap when the last letter is not exceeding', () => {
+      var text = 'Hello  Hello\n';
+      expect(Slickwrap.wrapText(text, 12)).toEqual({
+        increment: 0,
+        text: text
+      });
+    });
+
+    it('can wrap long rows to multiple lines', () => {
+      var text = 'Hello  Hello  Hello  Hello  Hello  Hello\n';
+      expect(Slickwrap.wrapText(text, 3)).toEqual({
+        increment: 5,
+        text: 'Hello\nHello\nHello\nHello\nHello\nHello\n'
       });
     });
   });
