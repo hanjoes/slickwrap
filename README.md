@@ -9,13 +9,13 @@ This package uses _editor.preferredLineLength_ from [wrap-guide](https://github.
 
 If _Auto Hard Wrap_ is turned on in package settings, a hard wrap will be inserted to control row length, but keep row as long as possible. Typing whitespace characters (WS, TAB, ENTER) will trigger auto wrap when _Auto Hard Wrap_ is turned on.
 
-![Auto Wrap Demo](./pics/autowrap.gif)
+![Auto Wrap Demo](https://raw.githubusercontent.com/hanjoes/slickwrap/master/pics/autowrap.gif)
 
 ### Wrap File
 
 Use keymap _alt-q_ to wrap the whole file. This will make the file only contain lines within configured max row length.
 
-![File Wrap Demo](./pics/altq.gif)
+![File Wrap Demo](https://raw.githubusercontent.com/hanjoes/slickwrap/master/pics/altq.gif)
 
 ### Note
 
