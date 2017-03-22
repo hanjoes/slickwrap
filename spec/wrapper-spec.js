@@ -68,5 +68,11 @@ describe('Wrapper', () => {
         {row: 4, from: 5, to: 7},
       ]);
     });
+
+    it('can handle cases when text is null or undefined', () => {
+      var text = 'Hello  Hello  Hello  Hello  Hello  Hello\n';
+      expect(Wrapper.wrapRow(0, null, 3)).toEqual([]);
+      expect(Wrapper.wrapRow(0, undefined, 3)).toEqual([]);
+    });
   });
 });
